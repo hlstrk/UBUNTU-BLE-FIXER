@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+set -Eeuo pipefail
+
+APP_USER_HOME="${HOME:?HOME is not set}"
+APP_DATA_HOME="${XDG_DATA_HOME:-${APP_USER_HOME}/.local/share}"
+APP_PACKAGE_ROOT="${APP_DATA_HOME}/ubuntu-ble-fixer"
+
+export PYTHONPATH="${APP_PACKAGE_ROOT}${PYTHONPATH:+:${PYTHONPATH}}"
+exec /usr/bin/python3 -m ubuntu_ble_fixer "$@"
